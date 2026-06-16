@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course Websites</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #fdf8f2;
+      color: #3b2e1e;
+      padding: 2rem 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #e8ddd0;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #5c3d1e;
+      margin-bottom: 0.4rem;
+    }
+
+    header p {
+      font-size: 1rem;
+      color: #8a6f54;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: #fff9f3;
+      border: 1px solid #e8ddd0;
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      border-color: #c9a57a;
+      box-shadow: 0 2px 8px rgba(92, 61, 30, 0.08);
+    }
+
+    .card-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #5c3d1e;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: #8a6f54;
+      line-height: 1.5;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e8ddd0;
+      font-size: 0.85rem;
+      color: #b09a84;
+      text-align: center;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <header>
+    <h1>Course Websites</h1>
+    <p>Select a course to get started</p>
+  </header>
+
+  <div class="grid">
+
+    <!-- ============================================================
+         ADD A COURSE: copy one <a> block below, paste it here,
+         and update the href, icon, title, and description.
+         ============================================================ -->
+
+    <a href="./engweb/" class="card">
+  <div class="card-icon" style="width:40px;height:40px;border-radius:50%;background:#4a7fc1;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">📖</div>
+  <div class="card-title">English</div>
+  <div class="card-desc">Read short stories and discuss TV episodes</div>
+</a>
+
+<a href="./curweb/" class="card">
+  <div class="card-icon" style="width:40px;height:40px;border-radius:50%;background:#4a9e6b;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">📖</div>
+  <div class="card-title">Current Events</div>
+  <div class="card-desc">Learn about and discuss news events</div>
+</a>
+
+<a href="./edupsy/" class="card">
+  <div class="card-icon" style="width:40px;height:40px;border-radius:50%;background:#7c5cbf;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">📖</div>
+  <div class="card-title">Educational Psychology</div>
+  <div class="card-desc">Short description here</div>
+</a>
+
+<a href="./wriweb/" class="card">
+  <div class="card-icon" style="width:40px;height:40px;border-radius:50%;background:#c15a5a;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">📖</div>
+  <div class="card-title">English Writing</div>
+  <div class="card-desc">Short description here</div>
+</a>
+
+<a href="./modweb/" class="card">
+  <div class="card-icon" style="width:40px;height:40px;border-radius:50%;background:#c9a020;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">📖</div>
+  <div class="card-title">Modern Art Language</div>
+  <div class="card-desc">Short description here</div>
+</a>
+
+<a href="./mytweb/" class="card">
+  <div class="card-icon" style="width:40px;height:40px;border-radius:50%;background:#3a9ea5;display:flex;align-items:center;justify-content:center;font-size:1.2rem;">📖</div>
+  <div class="card-title">Classical Mythology</div>
+  <div class="card-desc">Short description here</div>
+</a>
+  </div>
+
+  <footer>
+    &copy; 2026 &mdash; course-websites
+  </footer>
+
+</body>
+</html>
