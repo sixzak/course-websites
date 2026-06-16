@@ -1,0 +1,262 @@
+
+                     ** Pawfaliki v0.4.0 **
+												
+
+REQUIREMENTS
+============		
+									
+A working installation of php. 
+Pawfaliki has been tested with php-4.3.10 & php-5.0.2.
+
+
+INSTALLATION
+============
+
+1. Copy the pawfaliki.php file onto you webserver.
+
+2. Create a directory under the path where pawfaliki.php is located and 
+   call it something like PawfalikiPages.
+
+3. Chmod this directory so that php can write to it. 
+   This is where all your wiki content will be stored.
+	 
+4. Create another directory under the path where pawfaliki.php is located
+   and call it something like PawfalikiTemp.
+
+5. Chmod this directory so that php can write to it - this is where temporary 
+   backup files will be stored. 
+   This directory will be regularly emptied of files by Pawfaliki so don't use
+   it for storing anything else.
+
+6. Configure your pawfaliki.php file (see CONFIGURATION section below).
+
+
+CONFIGURATION
+=============
+
+The look of Pawfaliki can be configured using CSS. An example css file is
+included called pawfaliki.css which you can use to make your wiki look
+like www.pawfal.org - great!
+
+Very near the top of pawfaliki.php is the configuration section. This consists
+of a collection of variables stored in the $config array which you can edit as 
+you require. A description of these variables can be found below.
+
+If you're overwriting a few of these settings it may be easier to put all your 
+settings in an additional PHP file and specify it using the 
+$config['CONFIGFILE'] variable - see the exampleconfig.php file included with 
+pawfaliki for an example.
+
+$config['CONFIGFILE']
+- Filename for an additonal configuration file.
+- This file gets sourced after the main config section.
+- Useful for keeping all your site-specific settings when upgrading.
+- Needs to be valid PHP - see pawfaliki.cfg for an example.
+- By default set to "" (none).
+
+//=======================================
+// GENERAL: General configuration stuff
+//=======================================
+$config['GENERAL']['TITLE'] 
+ - The title of the wiki.
+ - By default set to "Pawfaliki".
+ 
+$config['GENERAL']['HOMEPAGE']
+ - The title of the homepage.
+ - By default set to "HomePage".
+
+$config['GENERAL']['ADMIN']
+ - Site admin's email address .
+ - This is not used currently.
+
+$config['GENERAL']['CSS'] 
+ - The CSS file to use for your Pawfaliki.
+ - use an empty string for no CSS.
+ - Made up of a description and a filename seperated by a : (colon).
+ - By default set to "Pawfaliki:pawfaliki.css".
+
+$config['GENERAL']['PAGES_DIRECTORY'] 
+ - The path to your stored wiki content.
+ - By default set to "./PawfalikiPages/".
+
+$config['GENERAL']['TEMP_DIRECTORY']
+ - The path to your Pawfaliki temporary directory. 
+ - By default set to "./PawfalikiTemp/".
+
+$config['GENERAL']['MODTIME_FORMAT']
+ - A date() compatible format string.
+ - Used to display the modification times on the pagelist.
+ - By default set to "(D M j G:i:s T Y)".
+ 
+$config['GENERAL']['SHOW_CONTROLS']
+ - Show all the wiki controls - edit, save, PageList etc...
+ - By default set to true.
+ 
+$config['GENERAL']['DEBUG']
+ - Display debug information (pagegen time, uptime, load).
+ - By default set to false.
+
+$config['GENERAL']['CONFIG']
+ - Filename for an additonal configuration file.
+ - This file gets sourced **after** the main config section.
+ - Useful for keeping all your site-specific settings when upgrading.
+ - Needs to be valid PHP - see pawfaliki.cfg for an example.
+ - By default set to "" (none).
+
+//==============================
+// SYNTAX: Wiki editing syntax
+//==============================
+$config['SYNTAX']['SHOW_BOX']
+ - Display the wiki syntax box on the edit page?
+ - By default set to true.
+ 
+$config['SYNTAX']['WIKIWORDS']
+ - Allow auto-generation of wiki links from WikiWords.
+ - By default set to true.
+ 
+$config['SYNTAX']['AUTOCREATE']
+ - Display ? next to wiki pages that don't exist yet.
+ - By default set to true.
+ 
+$config['SYNTAX']['HTMLCODE']
+ - Allow posting of raw html code using the %% syntax.
+ - By default set to false.
+
+//====================================
+// BACKUP: Backup & Restore settings
+//====================================
+$config['BACKUP']['ENABLE']
+ - Enable the backup & restore feature.
+ - By default set to true.
+
+$config['BACKUP']['USE_ZLIB']
+ - If the zlib module is available use it to produce backups.
+ - If the zlib module is available support uploading of gzipped backup files.
+ - By default set to true.
+ 
+$config['BACKUP']['MAX_SIZE']
+ - Sets the maximum size for an uploaded file (to restore from).
+ - By default set to 3000000 (~3MB).
+
+//================
+// RSS: RSS feed
+//================
+$config['RSS']['ENABLE']
+ - Enables generation of a RSS feed.
+ - Example feed: http://mywiki.example?format=rss.
+ - By default set to true.
+ 
+$config['RSS']['ITEMS']
+ - The number of pages to display in the RSS feed.
+ - Use -1 for all pages.
+ - By default set to 10.
+ 
+$config['RSS']['TITLE_MODTIME']
+ - Prints the file modification time in the RSS item title.
+ - By default set to false.
+
+$config['RSS']['MODTIME_FORMAT']
+ - A date() compatible format string.
+ - Used to display the modification times in the RSS feed.
+ - By default set to "(Y-m-d H:i:s T)".
+
+//==============================
+// CHANGES: email page changes
+//==============================
+$config['EMAIL']['ENABLE']
+ - Enables the sending of an email upon every page change.
+ - By default set to false.
+ 
+$config['EMAIL']['CHANGES_TO']
+ - The email address to send the emails to.
+ 
+$config['EMAIL']['CHANGES_FROM']
+ - The email address to send the emails from.
+ 
+$config['EMAIL']['MODTIME_FORMAT']
+ - A date() compatible format string.
+ - Used to display the modification times in email subject.
+ - By default set to "Y-m-d H:i:s".
+
+$config['EMAIL']['SHOW_IP']
+ - Prints the IP address of the modifier in the email subject.
+ - Think twice about enabling this if you're emailing to a public list etc.
+
+//==============================
+// USERS: setup user passwords
+//==============================
+$config['USERS']
+ - This is an array of users and their passwords.
+ - By default user 'admin' has the password 'adminpassword'.
+ - Changing the default password would be a good idea!
+
+//===========================================
+// RESTRICTED: setup restricted page access
+//===========================================
+$config['RESTRICTED']
+ - This is an array of pages and the users that can edit them.
+ - By default RestoreWiki is restricted so only 'admin' can restore backups.
+ 
+$config['RESTRICTED']['HTTP']
+ - If this is enabled HTTPAUTH is used to protect the entire wiki.
+ - This is an array of the users who can access the wiki.
+ - Only works if you PHP is running in the apache module mode.
+
+//====================================
+// IP BLOCKING: blocked IP addresses
+//====================================
+$config['BLOCKED_IPS']
+ - This is an array of IP addresses to block from editing the wiki.
+ - By default no IPs are blocked.
+
+//===========================================
+// LOCALE: text for some titles, icons, etc
+// you can use wiki syntax in these for images etc...
+//===========================================
+$config['LOCALE']['EDIT_TITLE']
+ - A title prefix for when editing pages.
+ - By default set to "Edit: "
+ 
+$config['LOCALE']['HOMEPAGE_LINK']
+ - The HomePage link text
+ - By default set to "[[HomePage]]"
+
+$config['LOCALE']['PAGELIST_LINK']
+ - The PageList link text
+ - By default set to "[[PageList]]"
+ 
+$config['LOCALE']['REQ_PASSWORD']
+ - Text to print next to the edit button on a restricted page.
+ - By default set to "(locked)".
+ 
+$config['LOCALE']['PASSWORD_TEXT']
+ - Text to print next to the password entry box on a restricted page edit.
+ - By default set to "Password:"
+
+//=====================================================
+// SPECIAL PAGES - reserved and unmodifiable by users
+//=====================================================
+$config['SPECIAL']
+ - An array of 'special' pages which are unmodifiable.
+ - Some page *MUST* be in this array: PageList, BackupWiki, RestoreWiki.
+
+//========================================
+// LICENSES: pages with special licenses
+//========================================
+$config['LICENSE']
+ - An array of function names which print license information.
+ - The default for pages is specified using the 'DEFAULT' element.
+ - By default 'DEFAULT' uses the creativeCommonsLicense() function.
+ - By default 'PageList', 'BackupWiki', and 'RestoreWiki' use noLicense().
+ 
+//===================
+// MISC: Misc stuff
+//===================
+$config['MISC']['EXTERNALLINKS_NEWWINDOW'] 
+ - Opens external links in a new window.
+ - By default set to false.
+ 
+$config['MISC']['REQ_PASSWORD_TEXT_IN_EDIT_BTN'] 
+ - Include the req password text in the edit button
+ - By default set to false.
+ 
